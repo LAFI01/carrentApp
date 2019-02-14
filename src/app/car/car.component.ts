@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { CarService } from '../Services/car.service';
-import 'rxjs/add/operator/map'
 
 
 @Component({

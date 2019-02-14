@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers, RequestOptions, Request, RequestMethod } from '@angular/http';
-import 'rxjs/add/operator/map'
+import { HttpClient } from '@angular/common/http';
+import {tap} from 'rxjs/operators';
 
 
 @Injectable({
@@ -11,13 +11,17 @@ export class CarService {
   // private apiKey = 'keyoyR6sPUS1SCK4k'
   // private header = { "Authorization": "Bearer " + this.apiKey };
   // public data: any = {};
-  constructor(private http : Http) {
+  constructor(private http : HttpClient) {
 
   }
     
 
     getAllCars(){
-      return this.http.get(this.apiUrl).map(response => response.json());
+      
+      return this.http.get(this.apiUrl)
+      .pipe(
+        tap(response => console.log(response))
+      );
     }
 
    
